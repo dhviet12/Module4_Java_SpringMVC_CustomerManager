@@ -5,20 +5,34 @@ import model.Customer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerService implements ICustomerService{
+public class CustomerService implements ICustomerService {
+    private static List<Customer> customerList = new ArrayList<>();
+
+    static {
+        customerList.add(new Customer(0, "Viet", "viet@gmail.com", "Ha Noi"));
+        customerList.add(new Customer(1, "Duy", "duy@gmail.com", "Ho Chi Minh"));
+        customerList.add(new Customer(2, "Nam", "nam@gmail.com", "Da Nang"));
+        customerList.add(new Customer(3, "Manh", "manh@gmail.com", "Ha Noi"));
+        customerList.add(new Customer(4, "Huy", "huy@gmail.com", "Bac Ninh"));
+    }
+
     @Override
     public List<Customer> findAll() {
-        List<Customer> customerList = new ArrayList<>();
-        customerList.add(new Customer(1,"Viet","viet@gmail.com","Ha Noi"));
-        customerList.add(new Customer(2,"Duy","duy@gmail.com","Ho Chi Minh"));
-        customerList.add(new Customer(3,"Nam","nam@gmail.com","Da Nang"));
-        customerList.add(new Customer(4,"Manh","manh@gmail.com","Ha Noi"));
-        customerList.add(new Customer(5,"Huy","huy@gmail.com","Bac Ninh"));
         return customerList;
     }
 
     @Override
     public Customer findById(int id) {
-        return null;
+        return customerList.get(id);
+    }
+
+    @Override
+    public void createCustomer(Customer customer) {
+        customerList.add(customer);
+    }
+
+    @Override
+    public Customer editCustomer(int id, Customer customer) {
+        return customerList.set(id,customer);
     }
 }

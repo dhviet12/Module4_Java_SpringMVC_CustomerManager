@@ -20,11 +20,15 @@
             <td>${c.name}</td>
             <td>${c.email}</td>
             <td>${c.address}</td>
+            <td>
+                <a href="/customer/edit/id=${c.id}">Edit</a>
+                <a href="/customer/delete/id=${c.id}">Delete</a>
+            </td>
         </tr>
     </c:forEach>
-
-
 </table>
+
+<h2><a href="/customer/create">Create</a></h2>
 
 </body>
 </html>

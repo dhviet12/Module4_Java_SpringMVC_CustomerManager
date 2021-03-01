@@ -9,5 +9,9 @@ public interface ICustomerService {
 
     Customer findById(int id);
 
+    void createCustomer(Customer customer);
+
+    Customer editCustomer(int id, Customer customer);
+
 
 }
