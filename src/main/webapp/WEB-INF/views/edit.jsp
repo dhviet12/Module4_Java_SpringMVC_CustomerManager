@@ -14,7 +14,6 @@
 <a href="/customer/"><h2>Back to Customer list</h2></a>
 <h1>Edit Customer information</h1>
 <form method="post" >
-    <input type="number" name="edit_id" value="${customer.id}">
     <input type="text" name="edit_name" value="${customer.name}">
     <input type="text" name="edit_email" value="${customer.email}">
     <input type="text" name="edit_address" value="${customer.address}">

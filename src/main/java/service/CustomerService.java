@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerService implements ICustomerService {
-    private static List<Customer> customerList = new ArrayList<>();
+    private static final List<Customer> customerList = new ArrayList<>();
 
     static {
         customerList.add(new Customer(0, "Viet", "viet@gmail.com", "Ha Noi"));
@@ -33,6 +33,22 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer editCustomer(int id, Customer customer) {
-        return customerList.set(id,customer);
+        return customerList.set(id, customer);
+    }
+
+    @Override
+    public void deleteCustomer(int id) {
+        customerList.remove(id);
+    }
+
+    @Override
+    public List<Customer> findByName(String name) {
+        List<Customer> result = new ArrayList<>();
+        for (Customer c: customerList) {
+            if (c.getName().equals(name)){
+                result.add(c);
+            }
+        }
+        return result;
     }
 }

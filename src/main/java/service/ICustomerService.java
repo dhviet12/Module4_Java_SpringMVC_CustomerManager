@@ -13,5 +13,9 @@ public interface ICustomerService {
 
     Customer editCustomer(int id, Customer customer);
 
+    void deleteCustomer(int id);
+
+    List<Customer> findByName(String name);
+
 
 }
