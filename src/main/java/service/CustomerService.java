@@ -3,22 +3,24 @@ package service;
 import model.Customer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CustomerService implements ICustomerService {
-    private static final List<Customer> customerList = new ArrayList<>();
+    private static final Map<Integer, Customer> customerList = new HashMap<>();
 
     static {
-        customerList.add(new Customer(0, "Viet", "viet@gmail.com", "Ha Noi"));
-        customerList.add(new Customer(1, "Duy", "duy@gmail.com", "Ho Chi Minh"));
-        customerList.add(new Customer(2, "Nam", "nam@gmail.com", "Da Nang"));
-        customerList.add(new Customer(3, "Manh", "manh@gmail.com", "Ha Noi"));
-        customerList.add(new Customer(4, "Huy", "huy@gmail.com", "Bac Ninh"));
+        customerList.put(1,new Customer(1, "Viet", "viet@gmail.com", "Ha Noi"));
+        customerList.put(2,new Customer(2, "Duy", "duy@gmail.com", "Ho Chi Minh"));
+        customerList.put(3,new Customer(3, "Nam", "nam@gmail.com", "Da Nang"));
+        customerList.put(4,new Customer(4, "Manh", "manh@gmail.com", "Ha Noi"));
+        customerList.put(5,new Customer(5, "Huy", "huy@gmail.com", "Bac Ninh"));
     }
 
     @Override
     public List<Customer> findAll() {
-        return customerList;
+        return new ArrayList<>(customerList.values());
     }
 
     @Override
@@ -28,12 +30,12 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void createCustomer(Customer customer) {
-        customerList.add(customer);
+        customerList.put(customer.getId(),customer);
     }
 
     @Override
     public Customer editCustomer(int id, Customer customer) {
-        return customerList.set(id, customer);
+        return customerList.put(id,customer);
     }
 
     @Override
@@ -44,11 +46,12 @@ public class CustomerService implements ICustomerService {
     @Override
     public List<Customer> findByName(String name) {
         List<Customer> result = new ArrayList<>();
-        for (Customer c: customerList) {
-            if (c.getName().equals(name)){
+        for (Customer c : customerList.values()) {
+            if (c.getName().equals(name)) {
                 result.add(c);
             }
         }
         return result;
     }
+
 }

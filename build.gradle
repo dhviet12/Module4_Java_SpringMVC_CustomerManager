@@ -22,6 +22,9 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.17.RELEASE'
     compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    //thymeleaf
+    compile group: 'org.thymeleaf', name: 'thymeleaf-spring4', version: '3.0.9.RELEASE'
+    compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.3.0'
 }
 
 test {

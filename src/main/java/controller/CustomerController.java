@@ -24,14 +24,16 @@ public class CustomerController {
 
     @GetMapping("/create")
     public ModelAndView showCreateForm() {
-        ModelAndView modelAndView = new ModelAndView(("create"));
+        ModelAndView modelAndView = new ModelAndView("create");
+        modelAndView.addObject("cus", new Customer());
         return modelAndView;
     }
 
     @PostMapping("/create")
-    public ModelAndView createCustomer(@RequestParam int id, String name, String email, String address) {
+    public ModelAndView createCustomer(@ModelAttribute Customer customer) {
         ModelAndView modelAndView = new ModelAndView("redirect:/customer");
-        Customer customer = new Customer(id, name, email, address);
+        int id = customerService.findAll().size();
+        customer.setId(id);
         customerService.createCustomer(customer);
         return modelAndView;
     }
@@ -45,9 +47,8 @@ public class CustomerController {
     }
 
     @PostMapping("edit/{id}")
-    public ModelAndView editCustomer(@RequestParam String edit_name, String edit_email, String edit_address, @PathVariable Integer id) {
+    public ModelAndView editCustomer(@ModelAttribute Customer customer, @PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView("redirect:/customer");
-        Customer customer = new Customer(edit_name, edit_email, edit_address);
         customerService.editCustomer(id, customer);
         return modelAndView;
     }
