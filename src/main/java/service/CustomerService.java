@@ -47,7 +47,7 @@ public class CustomerService implements ICustomerService {
     public List<Customer> findByName(String name) {
         List<Customer> result = new ArrayList<>();
         for (Customer c : customerList.values()) {
-            if (c.getName().equals(name)) {
+            if (c.getName().contains(name)) {
                 result.add(c);
             }
         }
