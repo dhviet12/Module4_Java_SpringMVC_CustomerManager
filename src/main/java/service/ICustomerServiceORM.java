@@ -16,4 +16,6 @@ public interface ICustomerServiceORM {
     void save(Customer customer);
 
     void remove(int id);
+
+    List<Customer> findByName(String name);
 }

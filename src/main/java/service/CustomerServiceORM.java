@@ -29,10 +29,11 @@ public class CustomerServiceORM implements ICustomerServiceORM {
 
     @Override
     public Customer findById(Integer id) {
-        String queryStr = "SELECT c FROM Customer AS c WHERE c.id = :id";
-        TypedQuery<Customer> query = entityManager.createQuery(queryStr, Customer.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+//        String queryStr = "SELECT c FROM Customer AS c WHERE c.id = :id";
+//        TypedQuery<Customer> query = entityManager.createQuery(queryStr, Customer.class);
+//        query.setParameter("id", id);
+//        return query.getSingleResult();
+       return entityManager.find(Customer.class,id);
     }
 
     @Override
@@ -107,5 +108,14 @@ public class CustomerServiceORM implements ICustomerServiceORM {
         Customer customer = this.findById(id);
         entityManager.remove(customer);
 
+    }
+
+    @Override
+    public List<Customer> findByName(String name) {
+        String queryStr = "SELECT c FROM Customer AS c WHERE c.name like :name";
+        TypedQuery<Customer> query = entityManager.createQuery(queryStr, Customer.class);
+        name = "%" + name + "%";
+        query.setParameter("name",name);
+        return query.getResultList();
     }
 }

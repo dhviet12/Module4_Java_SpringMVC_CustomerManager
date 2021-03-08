@@ -60,11 +60,11 @@ public class CustomerController {
         customerServiceORM.remove(id);
         return modelAndView;
     }
-//    @PostMapping("")
-//    public ModelAndView searchByName(@RequestParam String search){
-//        ModelAndView modelAndView = new ModelAndView("list");
-//        List<Customer> result = customerService.findByName(search);
-//        modelAndView.addObject("list",result);
-//        return  modelAndView;
-//    }
+    @PostMapping("")
+    public ModelAndView searchByName(@RequestParam String search){
+        ModelAndView modelAndView = new ModelAndView("list");
+        List<Customer> result = customerServiceORM.findByName(search);
+        modelAndView.addObject("list",result);
+        return  modelAndView;
+    }
 }
